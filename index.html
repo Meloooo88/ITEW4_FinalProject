@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cabuyao - Explore Our Beautiful City</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="/api/placeholder/150/50" alt="Discover Cabuyao Logo">
+                <h1>Discover Cabuyao</h1>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#" id="categories-dropdown-trigger">Categories <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown" id="categories-dropdown">
+                            <li><a href="#" data-category="tourism">Tourism</a></li>
+                            <li><a href="#" data-category="food">Food & Dining</a></li>
+                            <li><a href="#" data-category="culture">Culture & History</a></li>
+                            <li><a href="#" data-category="events">Events</a></li>
+                            <li><a href="#" data-category="lifestyle">Lifestyle</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h2>Exploring Cabuyao's Hidden Gems</h2>
+            <p>Discover the beauty, culture, and stories of Cabuyao City</p>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search articles...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section id="featured-posts">
+        <div class="container">
+            <h2 class="section-title">Featured Stories</h2>
+            <div class="featured-grid">
+                <article class="featured-post main-feature">
+                    <div class="post-image">
+                        <img src="/api/placeholder/600/400" alt="Cabuyao Lake">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag tourism">Tourism</span>
+                        <h3><a href="#post-1">Discovering the Beauty of Cabuyao Lake</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Maria Santos</span>
+                            <span class="date"><i class="fas fa-calendar"></i> May 1, 2025</span>
+                        </div>
+                        <p>Explore the natural wonder of Cabuyao Lake, one of the city's most treasured destinations with its crystal clear waters and lush surroundings...</p>
+                        <a href="#post-1" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="featured-post">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/300" alt="Local Cuisine">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag food">Food</span>
+                        <h3><a href="#post-2">5 Must-Try Local Delicacies in Cabuyao</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Juan Reyes</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 28, 2025</span>
+                        </div>
+                        <p>From sweet kalamay to savory pancit habhab, discover the authentic flavors of Cabuyao...</p>
+                        <a href="#post-2" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="featured-post">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/300" alt="Historical Sites">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag culture">Culture</span>
+                        <h3><a href="#post-3">The Historical Landmarks of Cabuyao</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Anna Cruz</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 25, 2025</span>
+                        </div>
+                        <p>Discover the rich history of Cabuyao through its preserved architectural treasures and monuments...</p>
+                        <a href="#post-3" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section id="recent-posts">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recent Articles</h2>
+                <div class="filter-container">
+                    <span>Filter by: </span>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="tourism">Tourism</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                    <button class="filter-btn" data-filter="culture">Culture</button>
+                    <button class="filter-btn" data-filter="events">Events</button>
+                    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+                </div>
+            </div>
+            
+            <div class="post-grid" id="post-grid">
+                <!-- Post 1 -->
+                <article class="post-card" data-category="tourism">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Hiking Trails">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag tourism">Tourism</span>
+                        <h3><a href="#post-4">Best Hiking Trails Around Cabuyao</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Carlos Mendoza</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 22, 2025</span>
+                        </div>
+                        <p>Discover the most scenic hiking trails that showcase the natural beauty of Cabuyao's countryside...</p>
+                        <a href="#post-4" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="post-card" data-category="events">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Festival">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag events">Events</span>
+                        <h3><a href="#post-5">Upcoming Summer Festival: What to Expect</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Elena Gomez</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 20, 2025</span>
+                        </div>
+                        <p>Mark your calendars for the annual Cabuyao Summer Festival with activities for the whole family...</p>
+                        <a href="#post-5" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="post-card" data-category="food">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Coffee Shop">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag food">Food</span>
+                        <h3><a href="#post-6">Cabuyao's Hidden Café Gems</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Patricia Lim</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 18, 2025</span>
+                        </div>
+                        <p>Explore the cozy and unique coffee shops that are transforming Cabuyao's food scene...</p>
+                        <a href="#post-6" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="post-card" data-category="lifestyle">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Local Market">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag lifestyle">Lifestyle</span>
+                        <h3><a href="#post-7">A Day at Cabuyao's Weekend Market</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Miguel Torres</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 15, 2025</span>
+                        </div>
+                        <p>Experience the vibrant atmosphere of the local market where artisans and farmers showcase their products...</p>
+                        <a href="#post-7" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="post-card" data-category="culture">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Traditional Dance">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag culture">Culture</span>
+                        <h3><a href="#post-8">The Traditional Dances of Cabuyao</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Isabella Reyes</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 12, 2025</span>
+                        </div>
+                        <p>Learn about the cultural heritage preserved through traditional performances and dances...</p>
+                        <a href="#post-8" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Post 6 -->
+                <article class="post-card" data-category="tourism">
+                    <div class="post-image">
+                        <img src="/api/placeholder/400/250" alt="Eco Park">
+                    </div>
+                    <div class="post-content">
+                        <span class="category-tag tourism">Tourism</span>
+                        <h3><a href="#post-9">Cabuyao Eco Park: A Family Destination</a></h3>
+                        <div class="post-meta">
+                            <span class="author"><i class="fas fa-user"></i> Rafael Dizon</span>
+                            <span class="date"><i class="fas fa-calendar"></i> April 10, 2025</span>
+                        </div>
+                        <p>Explore this family-friendly destination featuring playgrounds, gardens, and educational wildlife exhibits...</p>
+                        <a href="#post-9" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#" class="next">Next <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get weekly updates on the latest stories, events and special offers directly in your inbox.</p>
+                <form id="newsletter-form">
+                    <input type="email" id="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div id="newsletter-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Post Modal (for demo purposes) -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <article class="full-post">
+                <header class="post-header">
+                    <h2 class="post-title">Discovering the Beauty of Cabuyao Lake</h2>
+                    <div class="post-meta">
+                        <span class="author"><i class="fas fa-user"></i> Maria Santos</span>
+                        <span class="date"><i class="fas fa-calendar"></i> May 1, 2025</span>
+                        <span class="category"><i class="fas fa-tag"></i> Tourism</span>
+                    </div>
+                </header>
+                <div class="post-featured-image">
+                    <img src="/api/placeholder/800/500" alt="Cabuyao Lake">
+                </div>
+                <div class="post-body">
+                    <p>Nestled in the heart of Cabuyao City lies one of the region's most precious natural treasures - Cabuyao Lake. With its crystal clear waters reflecting the lush greenery surrounding it, this lake has become a sanctuary for both locals and tourists seeking to connect with nature.</p>
+
+                    <p>The lake's history dates back centuries, with local legends suggesting it was formed by a powerful earthquake that changed the landscape forever. Today, it serves as both an ecological sanctuary and a recreational haven.</p>
+
+                    <h3>Activities at the Lake</h3>
+                    <p>Visitors to Cabuyao Lake can enjoy a variety of activities:</p>
+                    <ul>
+                        <li>Boating and kayaking on the calm waters</li>
+                        <li>Hiking along the scenic trails that circle the lake</li>
+                        <li>Bird watching - the area is home to over 50 different bird species</li>
+                        <li>Picnicking at designated areas with stunning views</li>
+                        <li>Fishing for local species (with permit)</li>
+                    </ul>
+
+                    <h3>Conservation Efforts</h3>
+                    <p>The local government has implemented several conservation programs to protect the lake's ecosystem. These include regular clean-up drives, reforestation projects, and strict regulations on fishing and boating activities.</p>
+
+                    <p>Community involvement has been crucial to these efforts, with local schools and organizations participating in environmental education programs and conservation activities.</p>
+
+                    <h3>Best Time to Visit</h3>
+                    <p>While Cabuyao Lake is beautiful year-round, the best time to visit is during the dry season (November to May) when the skies are clear and the water is at its most transparent. Early mornings offer the most serene experience, with mist often hanging over the water creating a magical atmosphere.</p>
+
+                    <h3>How to Get There</h3>
+                    <p>Located just 5 kilometers from the city center, Cabuyao Lake is easily accessible by both private and public transportation. Regular jeepney services run from the main plaza to the lake entrance, or you can hire a tricycle for a more direct route.</p>
+
+                    <div class="post-gallery">
+                        <img src="/api/placeholder/300/200" alt="Lake View 1">
+                        <img src="/api/placeholder/300/200" alt="Lake View 2">
+                        <img src="/api/placeholder/300/200" alt="Lake View 3">
+                    </div>
+
+                    <p>Whether you're seeking adventure, relaxation, or simply a beautiful backdrop for your photos, Cabuyao Lake offers something for everyone. Its pristine waters and surrounding natural beauty make it a must-visit destination for anyone exploring Cabuyao City.</p>
+                </div>
+                <div class="post-tags">
+                    <span>Tags:</span>
+                    <a href="#">Nature</a>
+                    <a href="#">Tourism</a>
+                    <a href="#">Outdoor Activities</a>
+                    <a href="#">Cabuyao Lake</a>
+                </div>
+                <div class="author-box">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/80/80" alt="Maria Santos">
+                    </div>
+                    <div class="author-info">
+                        <h4>About Maria Santos</h4>
+                        <p>Maria is a travel writer and photographer who has been documenting the natural wonders of the Philippines for over 10 years. She is passionate about eco-tourism and community-based tourism initiatives.</p>
+                    </div>
+                </div>
+                <div class="post-navigation">
+                    <a href="#" class="prev-post"><i class="fas fa-arrow-left"></i> Previous Post</a>
+                    <a href="#" class="next-post">Next Post <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="comments-section">
+                    <h3>Comments (3)</h3>
+                    <div class="comment">
+                        <div class="comment-avatar">
+                            <img src="/api/placeholder/50/50" alt="User">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-meta">
+                                <span class="comment-author">Roberto Aquino</span>
+                                <span class="comment-date">April 30, 2025</span>
+                            </div>
+                            <p>This lake is truly a hidden gem! I visited last weekend and was amazed by how clean and beautiful it is. The hiking trails are well-maintained too.</p>
+                            <div class="comment-actions">
+                                <button class="reply-btn">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-avatar">
+                            <img src="/api/placeholder/50/50" alt="User">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-meta">
+                                <span class="comment-author">Lisa Garcia</span>
+                                <span class="comment-date">April 29, 2025</span>
+                            </div>
+                            <p>Great article! Are there any accommodation options near the lake for those who want to stay overnight?</p>
+                            <div class="comment-actions">
+                                <button class="reply-btn">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment reply">
+                        <div class="comment-avatar">
+                            <img src="/api/placeholder/50/50" alt="Maria Santos">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-meta">
+                                <span class="comment-author">Maria Santos (Author)</span>
+                                <span class="comment-date">April 29, 2025</span>
+                            </div>
+                            <p>Hi Lisa! There are several homestays and a small eco-resort just 1km from the lake entrance. I'll be covering accommodation options in my next article. Stay tuned!</p>
+                            <div class="comment-actions">
+                                <button class="reply-btn">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="comment-form">
+                        <h4>Leave a Comment</h4>
+                        <div class="form-group">
+                            <label for="comment-name">Name*</label>
+                            <input type="text" id="comment-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-email">Email* (will not be published)</label>
+                            <input type="email" id="comment-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-text">Comment*</label>
+                            <textarea id="comment-text" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-comment">Post Comment</button>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Discover Cabuyao</h3>
+                    <p>We are dedicated to showcasing the beauty, culture, and unique stories of Cabuyao City. Our mission is to promote local tourism and support community initiatives.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Tourism</a></li>
+                        <li><a href="#">Food & Dining</a></li>
+                        <li><a href="#">Culture & History</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact" id="contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@discovercabuyao.com</p>
+                        <p><i class="fas fa-phone"></i> +63 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Cabuyao City, Laguna, Philippines</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Discover Cabuyao. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            const mainNav = document.getElementById('main-nav');
+            mainNav.classList.toggle('show');
+        });
+
+        // Categories Dropdown
+        document.getElementById('categories-dropdown-trigger').addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = document.getElementById('categories-dropdown');
+            dropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('#categories-dropdown-trigger') && !e.target.matches('#categories-dropdown-trigger *')) {
+                const dropdown = document.getElementById('categories-dropdown');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+
+        // Post Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const postCards = document.querySelectorAll('.post-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                // Show/hide posts based on filter
+                postCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        document.getElementById('search-button').addEventListener('click', function() {
+            performSearch();
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const postCards = document.querySelectorAll('.post-card');
+            
+            postCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const content = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Reset filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+        }
+
+        // Newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const messageDiv = document.getElementById('newsletter-message');
+            
+            // Simple email validation
+            if (email && /^\S+@\S+\.\S+$/.test(email)) {
+                messageDiv.textContent = 'Thank you for subscribing!';
+                messageDiv.style.color = 'green';
+                document.getElementById('email').value = '';
+            } else {
+                messageDiv.textContent = 'Please enter a valid email address.';
+                messageDiv.style.color = 'red';
+            }
+        });
+
+        // Post Modal
+        const modal = document.getElementById('post-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+
+        // Comment Form
+        document.getElementById('comment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('comment-name').value;
+            const email = document.getElementById('comment-email').value;
+            const comment = document.getElementById('comment-text').value;
+            
+            if (name && email && comment) {
+                // Create new comment element (in a real application, this would be sent to a server)
+                const commentsSection = document.querySelector('.comments-section');
+                const newComment = document.createElement('div');
+                newComment.className = 'comment new-comment';
+                newComment.innerHTML = `
+                    <div class="comment-avatar">
+                        <img src="/api/placeholder/50/50" alt="User">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-meta">
+                            <span class="comment-author">${name}</span>
+                            <span class="comment-date">Just now</span>
+                        </div>
+                        <p>${comment}</p>
+                        <div class="comment-actions">
+                            <button class="reply-btn">Reply</button>
+                        </div>
+                    </div>
+                `;
+                
+                // Insert the new comment before the form
+                commentsSection.insertBefore(newComment, document.getElementById('comment-form'));
+                
+                // Clear the form
+                document.getElementById('comment-name').value = '';
+                document.getElementById('comment-email').value = '';
+                document.getElementById('comment-text').value = '';
+                
+                // Update comment count
+                const commentsHeading = document.querySelector('.comments-section h3');
+                const currentCount = parseInt(commentsHeading.textContent.match(/\d+/));
+                commentsHeading.textContent = `Comments (${currentCount + 1})`;
+            }
+        });
+
+        // Reply buttons
+        document.querySelectorAll('.reply-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const commentForm = document.getElementById('comment-form');
+                const commentText = document.getElementById('comment-text');
+                commentText.focus();
+                
+                // Scroll to comment form
+                commentForm.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopButton = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopButton.style.display = 'block';
+            } else {
+                scrollTopButton.style.display = 'none';
+            }
+        });
+        
+        scrollTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Pagination (demo functionality)
+        document.querySelectorAll('#pagination a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('#pagination a').forEach(a => a.classList.remove('active'));
+                
+                // Add active class to clicked link
+                if (!this.classList.contains('next')) {
+                    this.classList.add('active');
+                }
+                
+                // In a real application, this would load new content
+                alert('In a real application, this would load page ' + this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
