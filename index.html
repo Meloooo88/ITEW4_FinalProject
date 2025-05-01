@@ -1,3 +1,59 @@
+<?php
+// Mobile Navigation Toggle
+document.getElementById('nav-toggle').addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent propagation to document click handler
+    const mainNav = document.getElementById('main-nav');
+    mainNav.classList.toggle('show');
+});
+
+// Categories Dropdown
+document.getElementById('categories-dropdown-trigger').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent propagation to document click handler
+    const dropdown = document.getElementById('categories-dropdown');
+    dropdown.classList.toggle('show');
+});
+
+// Close categories dropdown when clicking on a category
+document.querySelectorAll('#categories-dropdown a').forEach(categoryLink => {
+    categoryLink.addEventListener('click', function() {
+        const dropdown = document.getElementById('categories-dropdown');
+        dropdown.classList.remove('show');
+    });
+});
+
+document.addEventListener('click', function(e) {
+    // Close main navigation on mobile when clicking outside
+    const mainNav = document.getElementById('main-nav');
+    const navToggle = document.getElementById('nav-toggle');
+    if (mainNav.classList.contains('show') && !mainNav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
+        mainNav.classList.remove('show');
+    }
+    
+    // Close categories dropdown when clicking outside
+    const dropdown = document.getElementById('categories-dropdown');
+    const dropdownTrigger = document.getElementById('categories-dropdown-trigger');
+    if (dropdown.classList.contains('show') && !dropdown.contains(e.target) && e.target !== dropdownTrigger && !dropdownTrigger.contains(e.target)) {
+        dropdown.classList.remove('show');
+    }
+});
+
+// Close mobile menu when window resizes to desktop width
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) { // Assuming 768px is your mobile breakpoint
+        const mainNav = document.getElementById('main-nav');
+        mainNav.classList.remove('show');
+    }
+});
+
+// Add aria-expanded attribute for accessibility
+document.getElementById('categories-dropdown-trigger').setAttribute('aria-expanded', 'false');
+document.getElementById('categories-dropdown-trigger').addEventListener('click', function() {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', (!isExpanded).toString());
+});
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +64,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
+
     <header id="main-header">
         <div class="container">
             <div class="logo">
@@ -37,7 +93,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="hero">
         <div class="container">
             <h2>Exploring Cabuyao's Hidden Gems</h2>
@@ -49,7 +104,6 @@
         </div>
     </section>
 
-    <!-- Featured Posts -->
     <section id="featured-posts">
         <div class="container">
             <h2 class="section-title">Featured Stories</h2>
@@ -105,7 +159,6 @@
         </div>
     </section>
 
-    <!-- Recent Posts -->
     <section id="recent-posts">
         <div class="container">
             <div class="section-header">
@@ -122,7 +175,6 @@
             </div>
             
             <div class="post-grid" id="post-grid">
-                <!-- Post 1 -->
                 <article class="post-card" data-category="tourism">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Hiking Trails">
@@ -139,7 +191,6 @@
                     </div>
                 </article>
 
-                <!-- Post 2 -->
                 <article class="post-card" data-category="events">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Festival">
@@ -156,7 +207,6 @@
                     </div>
                 </article>
 
-                <!-- Post 3 -->
                 <article class="post-card" data-category="food">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Coffee Shop">
@@ -173,7 +223,6 @@
                     </div>
                 </article>
 
-                <!-- Post 4 -->
                 <article class="post-card" data-category="lifestyle">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Local Market">
@@ -190,7 +239,6 @@
                     </div>
                 </article>
 
-                <!-- Post 5 -->
                 <article class="post-card" data-category="culture">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Traditional Dance">
@@ -207,7 +255,6 @@
                     </div>
                 </article>
 
-                <!-- Post 6 -->
                 <article class="post-card" data-category="tourism">
                     <div class="post-image">
                         <img src="/api/placeholder/400/250" alt="Eco Park">
@@ -234,7 +281,6 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section id="newsletter">
         <div class="container">
             <div class="newsletter-content">
@@ -249,7 +295,6 @@
         </div>
     </section>
 
-    <!-- Full Post Modal (for demo purposes) -->
     <div id="post-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -387,7 +432,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -428,224 +472,8 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scroll-top" title="Go to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!-- JavaScript -->
-    <script>
-        // Mobile Navigation Toggle
-        document.getElementById('nav-toggle').addEventListener('click', function() {
-            const mainNav = document.getElementById('main-nav');
-            mainNav.classList.toggle('show');
-        });
-
-        // Categories Dropdown
-        document.getElementById('categories-dropdown-trigger').addEventListener('click', function(e) {
-            e.preventDefault();
-            const dropdown = document.getElementById('categories-dropdown');
-            dropdown.classList.toggle('show');
-        });
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function(e) {
-            if (!e.target.matches('#categories-dropdown-trigger') && !e.target.matches('#categories-dropdown-trigger *')) {
-                const dropdown = document.getElementById('categories-dropdown');
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                }
-            }
-        });
-
-        // Post Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const postCards = document.querySelectorAll('.post-card');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filter = button.getAttribute('data-filter');
-                
-                // Show/hide posts based on filter
-                postCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Search functionality
-        document.getElementById('search-button').addEventListener('click', function() {
-            performSearch();
-        });
-
-        document.getElementById('search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-
-        function performSearch() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const postCards = document.querySelectorAll('.post-card');
-            
-            postCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const content = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // Reset filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
-        }
-
-        // Newsletter form
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const messageDiv = document.getElementById('newsletter-message');
-            
-            // Simple email validation
-            if (email && /^\S+@\S+\.\S+$/.test(email)) {
-                messageDiv.textContent = 'Thank you for subscribing!';
-                messageDiv.style.color = 'green';
-                document.getElementById('email').value = '';
-            } else {
-                messageDiv.textContent = 'Please enter a valid email address.';
-                messageDiv.style.color = 'red';
-            }
-        });
-
-        // Post Modal
-        const modal = document.getElementById('post-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const readMoreLinks = document.querySelectorAll('.read-more');
-        
-        readMoreLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = ''; // Re-enable scrolling
-        });
-        
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = ''; // Re-enable scrolling
-            }
-        });
-
-        // Comment Form
-        document.getElementById('comment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('comment-name').value;
-            const email = document.getElementById('comment-email').value;
-            const comment = document.getElementById('comment-text').value;
-            
-            if (name && email && comment) {
-                // Create new comment element (in a real application, this would be sent to a server)
-                const commentsSection = document.querySelector('.comments-section');
-                const newComment = document.createElement('div');
-                newComment.className = 'comment new-comment';
-                newComment.innerHTML = `
-                    <div class="comment-avatar">
-                        <img src="/api/placeholder/50/50" alt="User">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-meta">
-                            <span class="comment-author">${name}</span>
-                            <span class="comment-date">Just now</span>
-                        </div>
-                        <p>${comment}</p>
-                        <div class="comment-actions">
-                            <button class="reply-btn">Reply</button>
-                        </div>
-                    </div>
-                `;
-                
-                // Insert the new comment before the form
-                commentsSection.insertBefore(newComment, document.getElementById('comment-form'));
-                
-                // Clear the form
-                document.getElementById('comment-name').value = '';
-                document.getElementById('comment-email').value = '';
-                document.getElementById('comment-text').value = '';
-                
-                // Update comment count
-                const commentsHeading = document.querySelector('.comments-section h3');
-                const currentCount = parseInt(commentsHeading.textContent.match(/\d+/));
-                commentsHeading.textContent = `Comments (${currentCount + 1})`;
-            }
-        });
-
-        // Reply buttons
-        document.querySelectorAll('.reply-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const commentForm = document.getElementById('comment-form');
-                const commentText = document.getElementById('comment-text');
-                commentText.focus();
-                
-                // Scroll to comment form
-                commentForm.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Scroll to Top Button
-        const scrollTopButton = document.getElementById('scroll-top');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollTopButton.style.display = 'block';
-            } else {
-                scrollTopButton.style.display = 'none';
-            }
-        });
-        
-        scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Pagination (demo functionality)
-        document.querySelectorAll('#pagination a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                document.querySelectorAll('#pagination a').forEach(a => a.classList.remove('active'));
-                
-                // Add active class to clicked link
-                if (!this.classList.contains('next')) {
-                    this.classList.add('active');
-                }
-                
-                // In a real application, this would load new content
-                alert('In a real application, this would load page ' + this.textContent);
-            });
-        });
-    </script>
 </body>
 </html>
