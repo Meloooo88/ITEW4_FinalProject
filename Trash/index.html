@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cabuyao </title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo"> <span>Discover Cabuyao</span></a>
+            
+            
+            
+           <!-- Spot Card -->
+<div class="spot-card">
+    <button class="filter-button" onclick="openTransportForm('Spot Name')">Book Transport</button>
+    <button class="filter-button" onclick="openViewBooking()">View Booking</button>
+    <a href="login.html" class="filter-button" >Log Out</a>
+</div>
+
+<!-- Transport Booking Form -->
+<div id="transportForm" class="transport-form" style="display: none;">
+    <div class="form-container">
+        <h2>Book Transport to <span id="spotName"></span></h2>
+        <form id="bookingForm">
+            <label for="pickupLocation">Pickup Location:</label>
+            <input type="text" id="pickupLocation" name="pickupLocation" required>
+
+            <label for="pickupDate">Pickup Date:</label>
+            <input type="date" id="pickupDate" name="pickupDate" required>
+
+            <label for="pickupTime">Pickup Time:</label>
+            <input type="time" id="pickupTime" name="pickupTime" required>
+
+            <label for="numberOfPeople">Number of People:</label>
+            <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+        <button onclick="closeTransportForm()">Close</button>
+    </div>
+</div>
+
+<!-- View Booking Form -->
+<div id="viewBooking" class="view-booking" style="display: none;">
+    <div class="form-container">
+        <h2>Your Bookings</h2>
+        <ul id="bookingList"></ul>
+        <button onclick="closeViewBooking()">Close</button>
+    </div>
+</div>
+
+<!-- Transaction Details Popup -->
+<div id="transactionPopup" class="transaction-popup" style="display: none;">
+    <div class="form-container" id="transactionContainer">
+        <!-- Transaction details will be populated here -->
+    </div>
+</div>
+
+<!-- JavaScript Code -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to open the transport booking form
+    window.openTransportForm = function(spotName) {
+        document.getElementById('spotName').textContent = spotName;
+        document.getElementById('transportForm').style.display = 'flex';
+    };
+
+    // Function to close the transport booking form
+    window.closeTransportForm = function() {
+        document.getElementById('transportForm').style.display = 'none';
+    };
+
+    // Function to open the view booking form
+    window.openViewBooking = function() {
+        const bookingList = document.getElementById('bookingList');
+        bookingList.innerHTML = ''; // Clear previous list
+
+        const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        bookings.forEach(booking => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Spot: ${booking.spotName}, Pickup Location: ${booking.pickupLocation}, Date: ${booking.pickupDate}, Time: ${booking.pickupTime}, People: ${booking.numberOfPeople}`;
+            bookingList.appendChild(listItem);
+        });
+
+        document.getElementById('viewBooking').style.display = 'flex';
+    };
+
+    // Function to close the view booking form
+    window.closeViewBooking = function() {
+        document.getElementById('viewBooking').style.display = 'none';
+    };
+
+    // Handle transport booking form submission
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const bookingDetails = {
+            spotName: document.getElementById('spotName').textContent,
+            pickupLocation: document.getElementById('pickupLocation').value,
+            pickupDate: document.getElementById('pickupDate').value,
+            pickupTime: document.getElementById('pickupTime').value,
+            numberOfPeople: document.getElementById('numberOfPeople').value,
+        };
+
+        // Save booking details to local storage
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        bookings.push(bookingDetails);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+
+        // Log the booking details and show confirmation
+        console.log('Booking Details:', bookingDetails);
+        alert('Transport booked successfully!');
+
+        // Close the form after booking
+        closeTransportForm();
+    });
+
+    // Function to display transaction details
+    window.displayTransactionDetails = function() {
+        const transactionContainer = document.getElementById("transactionContainer");
+        const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+        if (bookings.length === 0) {
+            transactionContainer.innerHTML = "<p>There are no reservations information.</p>" +
+                "<button onclick='closeTransactionPopup()'>Close</button>";
+        } else {
+            transactionContainer.innerHTML = "";
+            bookings.forEach(booking => {
+                const transactionInfo = document.createElement("div");
+                transactionInfo.innerHTML = "<h2>Transaction Details</h2>" +
+                    `<p><strong>Spot:</strong> ${booking.spotName}</p>` +
+                    `<p><strong>Pickup Location:</strong> ${booking.pickupLocation}</p>` +
+                    `<p><strong>Pickup Date:</strong> ${booking.pickupDate}</p>` +
+                    `<p><strong>Pickup Time:</strong> ${booking.pickupTime}</p>` +
+                    `<p><strong>Number of People:</strong> ${booking.numberOfPeople}</p>` +
+                    "<button onclick='closeTransactionPopup()'>Close</button>";
+                transactionContainer.appendChild(transactionInfo);
+            });
+        }
+        document.getElementById("transactionPopup").style.display = "block";
+    };
+
+    window.closeTransactionPopup = function() {
+        document.getElementById("transactionPopup").style.display = "none";
+    };
+});
+</script>
+<style>
+.transport-form, .view-booking, .transaction-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-container {
+    padding: 8px 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 4px;
+    background: #00c04b;
+    color: var(--bg-color);
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px; 
+
+}
+
+.filter-button {
+    padding: 8px 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 4px;
+    background: var(--second-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px; /* Adjust as needed */
+}
+
+.filter-button:hover {
+    background: hsl(110, 100%, 53%);
+    transition: 0.5s;
+}
+</style>
+
+    </div>
+</div>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-text container">
+            <h2 class="home-title">Discover Cabuyao</h2>
+            <span class="home-subtitle"></span>
+        </div>
+    </section>
+
+    <section class="about container" id="about">
+        <div class="contentBx">
+            <h2 class="titleText">Welcome to Discover Cabuyao </h2>
+            <p class="title-text">
+                Cabuyao was once the central part of "Tabuco", a large territory which once included the modern-day cities of San Pedro, Biñan, Santa Rosa and Calamba. The name "Cabuyao" came from the kabuyaw tree, Citrus hystrix. After the colonization of Manila by Miguel López de Legazpi in 1570, he instructed Capt.
+            </p>
+            <a href="readmore.html" class="btn2">Read more</a>
+            
+        </div>
+        <div class="imgBx">
+            <img src="Cabuyao_city_seal.png" alt="" class="fitBg">
+        </div>
+    </section>
+
+    <div class="post-filter container">
+        <span class="filter-item active-filter" data-filter="all">All</span>
+        <span class="filter-item" data-filter="Cafe">Cafe</span>
+        <span class="filter-item" data-filter="School">School</span>
+        <span class="filter-item" data-filter="Nature">Nature Spots</span>
+
+        
+    </div>
+    
+    <div class="post container">
+        
+        <div class="post-box Cafe">
+            <img src="pau.jpg" alt="" class="post-img">
+            <h2 class="category">Cafe</h2>
+            <a href="pau.html" class="post-title">Paulita's Cafe</a>
+        </div>
+        
+        <div class="post-box Cafe">
+            <img src="cmv.jpg" alt="" class="post-img">
+            <h2 class="category">Cafe</h2>
+            <a href="cmv.html" class="post-title">Coffee Meets Vape</a>
+        </div>
+        
+        <div class="post-box Cafe">
+            <img src="call.jpg" alt="" class="post-img">
+            <h2 class="category">Cafe</h2>
+            <a href="calle.html" class="post-title">Calle CO.</a>
+        </div>
+        
+        <div class="post-box School">
+            <img src="https://th.bing.com/th?id=OLC.gsQmL/H3silj5g480x360&rs=1&pid=ImgDetMain" alt="" class="post-img">
+            <h2 class="category">School</h2>
+            <a href="pnc.html" class="post-title">University of Cabuyao</a>
+        </div>
+        
+        <div class="post-box School">
+            <img src="https://lh5.googleusercontent.com/Eo4LkyUJ42yZCQBsl5WKAbA2DG-xnkyN4JmSaed86dGkofYPN9Ot4UfORGIk77V9T3y0Any2" alt="" class="post-img">
+            <h2 class="category">School</h2>
+            <a href="svcc.html" class="post-title">St. Vincent College of Laguna</a>
+        </div>
+        
+        <div class="post-box School">
+            <img src="https://scontent.fmnl16-1.fna.fbcdn.net/v/t39.30808-6/305220228_453776773436941_7898331061242969290_n.jpg?stp=dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGGxvc_qrepvPagaehNC1JqYS0JnsTqWmhhLQmexOpaaDnkhgK9LTnCFvh5TFZAofLULFpOiBw4RMF6BBB4GXMf&_nc_ohc=ArPG28luOGsQ7kNvgFenE2i&_nc_ht=scontent.fmnl16-1.fna&oh=00_AYAj_OUby06P0DimAKhQFAEExEU6Y4eCg2rYurhWKJzWgg&oe=66726371" alt="" class="post-img">
+            <h2 class="category">School</h2>
+            <a href="sj.html" class="post-title">St. Jerome Integradted School of Cabuyao</a>
+        </div>
+        
+        <div class="post-box Nature">
+            <img src="daang nia.jpg" alt="" class="post-img">
+            <h2 class="category">Nature</h2>
+            <a href="nia.html" class="post-title">Daang Nia</a>
+        </div>
+        
+        <div class="post-box Nature">
+            <img src="prontal.jpg" alt="" class="post-img">
+            <h2 class="category">Nature</h2>
+            <a href="prontal.html" class="post-title">Prontal</a>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p>"Welcome to 'Discover Cabuyao,' your ultimate guide to unlocking the hidden gems and picturesque landscapes of Cabuyao. Nestled in the heart of the Philippines, Cabuyao is a haven of natural beauty, cultural richness, and unforgettable experiences waiting to be explored.
+
+                    Embark on a virtual journey with us as we unveil the captivating allure of Cabuyao's stunning locales, from lush greenery to serene lakeshores, quaint neighborhoods to vibrant marketplaces. Whether you're a seasoned traveler seeking new adventures or a local enthusiast eager to delve deeper into your hometown, our curated collection of destinations promises to inspire and delight.
+                    
+                    Join us as we unravel the tapestry of Cabuyao's charm, offering insider tips, immersive storytelling, and breathtaking imagery to ignite your wanderlust. From historic landmarks to hidden trails, culinary delights to community festivities, 'Discover Cabuyao' is your passport to discovering the soul of this enchanting city.
+                    
+                    Come, let's embark on a journey of discovery together and uncover the magic that awaits in every corner of Cabuyao."</p>
+                <ul class="sci">
+                    <li><a href="https://www.facebook.com/profile.php?id=61560378418789&mibextid=ZbWKwL"><i class="bx bxl-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/discovercabuyao"><i class="bx bxl-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quicklinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                </ul>
+            </div>
+            <div class="sec contactBx">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class='bx bxs-map'></i></span>
+                        <span>Cabuyao Laguna<br> </span>
+                    </li>
+                    <li>
+                        <span><i class='bx bx-envelope' ></i></span>
+                        <p><a href="">discovercabuyao@gmail.com</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+</body>
+</html>
