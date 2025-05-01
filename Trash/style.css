@@ -59,7 +59,7 @@ header{
 header.shadow{
     background: var(--bg-color);
     box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
-    transition: .5s;
+    transition: .2s;
 }
 
 header.shadow .logo{
@@ -89,7 +89,7 @@ header.shadow .logo{
 
 .filter-button:hover {
     background: hsl(110, 100%, 53%);
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .logo{
@@ -123,7 +123,7 @@ header.shadow .logo{
 
 .login:hover{
     background: hsl(110, 100%, 53%);
-    transition: .5s;
+    transition: .2s;
 }
 
 .signUp{
@@ -138,13 +138,13 @@ header.shadow .logo{
 
 .signUp:hover{
     background: hsl(110, 100%, 53%);
-    transition: .5s;
+    transition: .2s;
 }
 /**/
 .home{
     width: 100%;
     min-height: 440px;
-    background: url("maps.jpg");
+    background: url("images/maps.jpg");
     display: grid;
     justify-content: center;
     align-items: center;
@@ -207,7 +207,7 @@ header.shadow .logo{
     border: .8px solid #111;
     color: #333;
     text-decoration: none;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 .btn2:hover{
@@ -381,7 +381,7 @@ footer p{
     margin-right: 10px;
     text-decoration: none;
     border-radius: 4px;
-    transition: .5s;
+    transition: .2s;
 }
 
 .sci li a:hover{
@@ -407,7 +407,7 @@ footer p{
     text-decoration: none;
     margin-bottom: 10px;
     display: inline-block;
-    transition: .3s;
+    transition: .2s;
 }
 
 .quicklinks ul li a:hover{
@@ -441,7 +441,7 @@ footer p{
 .contactBx .info li a{
     color: #999;
     text-decoration: none;
-    transition: .5s;
+    transition: .2s;
 }
 
 .contactBx .info li a:hover{
@@ -652,7 +652,7 @@ footer p{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
 .form-container button:hover {
