@@ -34,6 +34,7 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
+                <div class="bar"></div>
             </div>
 
             <!-- Transport Booking Form -->
@@ -145,14 +146,14 @@
                 transactionContainer.innerHTML = "";
                 bookings.forEach(booking => {
                     const transactionInfo = document.createElement("div");
-                    transactionInfo.innerHTML = "<h2>Transaction Details</h2>" +
-                        <p><strong>Spot:</strong> ${booking.spotName}</p> +
-                        <p><strong>Pickup Location:</strong> ${booking.pickupLocation}</p> +
-                        <p><strong>Pickup Date:</strong> ${booking.pickupDate}</p> +
-                        <p><strong>Pickup Time:</strong> ${booking.pickupTime}</p> +
-                        <p><strong>Number of People:</strong> ${booking.numberOfPeople}</p> +
-                        "<button onclick='closeTransactionPopup()'>Close</button>";
-                    transactionContainer.appendChild(transactionInfo);
+                    transactionInfo.innerHTML = `
+                        <h2>Transaction Details</h2>
+                        <p><strong>Spot:</strong> ${booking.spotName}</p>
+                        <p><strong>Pickup Location:</strong> ${booking.pickupLocation}</p>
+                        <p><strong>Pickup Date:</strong> ${booking.pickupDate}</p>
+                        <p><strong>Pickup Time:</strong> ${booking.pickupTime}</p>
+                        <p><strong>Number of People:</strong> ${booking.numberOfPeople}</p>
+                        <button onclick="closeTransactionPopup()">Close</button>`;
                 });
             }
             document.getElementById("transactionPopup").style.display = "block";
