@@ -299,7 +299,7 @@ header.scrolled {
 }
 
 .imgBx img {
-    max-width: 100%;
+    max-width: 120%;
     border-radius: 10px;
     box-shadow: var(--shadow);
     transition: var(--transition);
