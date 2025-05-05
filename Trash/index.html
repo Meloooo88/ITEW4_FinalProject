@@ -39,42 +39,172 @@
             <!-- Transport Booking Form -->
             <div id="transportForm" class="transport-form">
                 <div class="form-container">
-                    <h2>Book Transport to <span id="spotName">Cabuyao</span></h2>
+                    <button class="close-btn" onclick="closeTransportForm()">x</button>
+                    <div class="form-header">
+                        <h2>Book Transport to <span id="spotName">Cabuyao</span></h2>
+                        <p>Complete the form below to arrange transportation to your destination. All fields marked with an asterisk (*) are required.</p>
+                    </div>
+                    
                     <form id="bookingForm">
-                        <label for="pickupLocation">Pickup Location:</label>
-                        <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter your pickup location" required>
+                        <!-- Customer Information -->
+                        <div class="form-section">
+                            <h3>Customer Information</h3>
+                            <div class="form-group col-2">
+                                <div>
+                                    <label for="customerPhone">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="+63 xxx xxx xxxx" required>
+                                    <div class="form-hint">We'll only use this to contact you about your booking</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerEmail">Email Address <span class="required">*</span></label>
+                                <input type="email" id="customerEmail" name="customerEmail" placeholder="your.email@example.com" required>
+                                <div class="form-hint">Booking confirmation will be sent to this email</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-divider"></div>
+                        
+                        <!-- Trip Details -->
+                        <div class="form-section">
+                            <h3>Trip Details</h3>
+                            <div class="form-group">
+                                <label for="pickupLocation">Pickup Location <span class="required">*</span></label>
+                                <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter your exact pickup address" required>
+                                <div class="form-hint">Please provide complete address for accurate pickup</div>
+                            </div>
 
-                        <label for="pickupDate">Pickup Date:</label>
-                        <input type="date" id="pickupDate" name="pickupDate" required>
-
-                        <label for="pickupTime">Pickup Time:</label>
-                        <input type="time" id="pickupTime" name="pickupTime" required>
-
-                        <label for="numberOfPeople">Number of People:</label>
-                        <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" max="10" required>
-
-                        <button type="submit">Book Now</button>
+                            <div class="form-group col-2">
+                                <div>
+                                    <label for="pickupDate">Pickup Date <span class="required">*</span></label>
+                                    <input type="date" id="pickupDate" name="pickupDate" required>
+                                </div>
+                                <div>
+                                    <label for="pickupTime">Pickup Time <span class="required">*</span></label>
+                                    <input type="time" id="pickupTime" name="pickupTime" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group col-2">
+                                <div>
+                                    <label for="numberOfPeople">Number of People <span class="required">*</span></label>
+                                    <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" max="15" required>
+                                    <div class="form-hint">Maximum 15 passengers</div>
+                                </div>
+                                <div>
+                                    <label for="vehicleType">Vehicle Type <span class="required">*</span></label>
+                                    <select id="vehicleType" name="vehicleType" required>
+                                        <option value="">Select vehicle</option>
+                                        <option value="sedan">Sedan (1-4 people)</option>
+                                        <option value="suv">SUV (1-6 people)</option>
+                                        <option value="van">Van (1-10 people)</option>
+                                        <option value="minibus">Minibus (1-15 people)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-divider"></div>
+                        
+                        <!-- Additional Information -->
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            <div class="form-group">
+                                <label for="specialRequests">Special Requests</label>
+                                <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requirements or requests?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="luggageCount">Number of Luggage Items</label>
+                                <input type="number" id="luggageCount" name="luggageCount" min="0" value="0">
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <strong>Note:</strong> A 20% deposit will be required to confirm your booking. The balance can be paid to the driver on the day of travel.
+                        </div>
+                        
+                        <button type="submit">Complete Booking</button>
+                        
+                        <div class="form-footer">
+                            By completing this booking, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                        </div>
                     </form>
-                    <button onclick="closeTransportForm()">Close</button>
                 </div>
             </div>
 
             <!-- View Booking Form -->
             <div id="viewBooking" class="view-booking">
                 <div class="form-container">
+                    <button class="close-btn" onclick="closeViewBooking()">x</button>
                     <h2>Your Bookings</h2>
-                    <ul id="bookingList"></ul>
-                    <button onclick="closeViewBooking()">Close</button>
+                    <div class="booking-container">
+                        <ul id="bookingList"></ul>
+                        <div id="noBookings" style="display: none; text-align: center; padding: 25px;">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 15px; display: block; color: var(--text-light);">
+                                <path d="M19 8C20.6569 8 22 6.65685 22 5C22 3.34315 20.6569 2 19 2C17.3431 2 16 3.34315 16 5C16 6.65685 17.3431 8 19 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2H9C6 2 4 4 4 7V15C4 18 6 20 9 20H15C18 20 20 18 20 15V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.51 11.4L14.51 16.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14.51 11.4L9.51 16.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p style="color: var(--text-secondary); font-size: 16px; font-weight: 500;">No Bookings Found</p>
+                            <p style="color: var(--text-light);">You don't have any active transport bookings at the moment.</p>
+                            <button onclick="closeViewBooking()" class="button-secondary" style="max-width: 200px; margin: 15px auto 0;">Make a Booking</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Transaction Details Popup -->
             <div id="transactionPopup" class="transaction-popup">
                 <div class="form-container" id="transactionContainer">
-                    <!-- Transaction details will be populated here -->
+                    <h2>Booking Confirmation</h2>
+                    
+                    <div class="confirmation-message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0">
+                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Your booking has been confirmed successfully. A confirmation email will be sent shortly.</span>
+                    </div>
+                    
+                    <div class="booking-reference-number">
+                        <div style="font-size: 12px; color: var(--text-light); margin-bottom: 5px;">Booking Reference</div>
+                        <div id="bookingReference">TBK-24050501</div>
+                    </div>
+                    
+                    <div class="transaction-details">
+                        <!-- Transaction details will be populated here dynamically -->
+                    </div>
+                    
+                    <div class="price-summary">
+                        <div class="price-row">
+                            <span>Base fare</span>
+                            <span id="baseFare">₱1,200.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Service fee</span>
+                            <span id="serviceFee">₱150.00</span>
+                        </div>
+                        <div class="price-row price-total">
+                            <span>Total</span>
+                            <span id="totalPrice">₱1,350.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <strong>Important:</strong> Please be ready 15 minutes before your scheduled pickup time. Your driver will contact you before arrival.
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+                        <button onclick="downloadBookingDetails()" class="button-secondary">Download Details</button>
+                        <button onclick="closeTransactionPopup()">Close</button>
+                    </div>
+                    
+                    <button class="close-btn" onclick="closeTransactionPopup()">×</button>
                 </div>
             </div>
-        </div>
     </header>
 
     <section class="home" id="home">
