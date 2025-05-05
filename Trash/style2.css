@@ -856,25 +856,28 @@ footer {
     background-color: var(--dark-bg);
     color: white;
     padding: 60px 0 30px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(333px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.sec h2 {
+/* Section Headers */
+.sec h2, .resources-title {
     position: relative;
     margin-bottom: 20px;
     padding-bottom: 10px;
     font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 600;
 }
 
-.sec h2::after {
+.sec h2::after, .resources-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -884,17 +887,22 @@ footer {
     background-color: var(--primary-color);
 }
 
+/* About Us Section */
 .aboutus p {
     margin-bottom: 20px;
     color: #bbb;
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
+/* Social Media Icons */
 .sci {
     display: flex;
     gap: 15px;
     margin-top: 20px;
     flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
 }
 
 .sci li a {
@@ -903,14 +911,11 @@ footer {
     justify-content: center;
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
-    padding: 10px;
-    box-shadow: var(--shadow);
     width: 40px;
     height: 40px;
-    background: #222;
-    border-radius: 4px;
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .sci li a:hover {
@@ -922,50 +927,167 @@ footer {
     font-size: 20px;
 }
 
+/* Quick Links Section */
+.quicklinks ul {
+    list-style: none;
+    padding-left: 0;
+}
+
 .quicklinks ul li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    position: relative;
 }
 
 .quicklinks ul li a {
     color: #bbb;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .quicklinks ul li a:hover {
     color: white;
-    padding-left: 5px;
+    padding-left: 8px;
+}
+
+.quicklinks ul li a::before {
+    content: '›';
+    position: absolute;
+    left: -10px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--primary-color);
+}
+
+.quicklinks ul li a:hover::before {
+    opacity: 1;
+    left: 0;
+}
+
+/* Contact Info Section */
+.info {
+    list-style: none;
+    padding-left: 0;
 }
 
 .info li {
     display: flex;
     margin-bottom: 15px;
+    align-items: flex-start;
 }
 
 .info li span:first-child {
-    margin-right: 10px;
+    margin-right: 12px;
     color: var(--primary-color);
     font-size: 20px;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
 }
 
 .info li p {
     font-size: 0.95rem;
+    margin: 0;
+    color: #bbb;
 }
 
 .info li p a {
     color: #bbb;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .info li p a:hover {
     color: white;
 }
 
+/* Resources Section */
+.resources-section {
+    grid-column: 1 / -1;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.resources-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.resources-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.resources-list li {
+    margin-bottom: 10px;
+}
+
+.resources-list li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.resources-list li a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+/* Copyright Section */
 .copyright {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
+    padding-top: 20px;
     font-size: 0.9rem;
-    color: #bbb;
+    color: #999;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright p {
+    margin: 5px 0;
+}
+
+.copyright a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.copyright a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .sec h2, .resources-title {
+        font-size: 1.2rem;
+    }
+    
+    .sci {
+        justify-content: center;
+    }
 }
 
 
