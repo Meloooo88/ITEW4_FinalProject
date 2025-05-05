@@ -214,6 +214,7 @@
      ABOUT SECTION
      ======================== */
   .about.container {
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -228,7 +229,7 @@
   }
   
   .imgBx {
-    flex: 1 1 400px; /* increased min-width */
+    flex: 1 1 600px; /* increased min-width */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,7 +237,7 @@
   
   .fitBg {
     width: 100%;
-    max-width: 500px; /* image max width increased */
+    max-width: 1000px; /* image max width increased */
     border-radius: 10px;
   }
   
