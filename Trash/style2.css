@@ -1331,6 +1331,13 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .title-text, .footer-text{
+        text-align: justify;
+        font-size: 0.9rem;
+    }
+    .copyright {
+        font-size: 0.8rem;
+    }
     .container {
         padding: 0 10px;
     }
@@ -1355,6 +1362,10 @@ footer {
     .post-img {
         height: 180px;
     }
+    .imgBx img {
+        max-width: 80%;
+        height: auto;
+    }
     
     /* Fixed items that were overlapping on smaller screens */
     #bookingForm input,
@@ -1377,6 +1388,7 @@ footer {
     }
 }
 
+
 /* Fix for iOS form inputs */
 @supports (-webkit-touch-callout: none) {
     input, select, textarea {
@@ -1397,24 +1409,6 @@ footer {
     .transaction-popup {
         align-items: flex-start;
         padding-top: 50px;
-    }
-}
-/* Fix for iOS zoom on input focus */
-@media screen and (max-width: 768px) {
-    input, select, textarea {
-        font-size: 16px;
-    }
-} 
-/* Fix for iOS zoom on input focus */
-@media screen and (max-width: 768px) {
-    input, select, textarea {
-        font-size: 16px;
-    }
-}
-/* Fix for iOS zoom on input focus */
-@media screen and (max-width: 768px) {
-    input, select, textarea {
-        font-size: 16px;
     }
 }
 /* Fix for iOS zoom on input focus */

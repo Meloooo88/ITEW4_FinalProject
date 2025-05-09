@@ -80,6 +80,7 @@
   }
   
   .logo {
+    margin-left: 20px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -226,6 +227,7 @@
   
   .contentBx {
     flex: 1 1 500px;
+    padding: 1rem;
   }
   
   .imgBx {
@@ -532,5 +534,20 @@
       flex-direction: column;
       text-align: center;
       align-items: center;
+    }
+  }
+  @media (max-width: 480px) {
+    .footer-container {
+      padding: 0 1rem;
+    }
+    footer .sec {
+      flex: 1 1 100%;
+      min-width: 100%;
+    }
+    .title-text{
+      text-align: justify;
+    }
+    .fitBg {
+      border-radius: 0;
     }
   }
